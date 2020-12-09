@@ -1,23 +1,25 @@
-const products = [
-  { name: 'Радар', price: 1300, quantity: 4 },
-  { name: 'Сканер', price: 2700, quantity: 3 },
-  { name: 'Дроид', price: 400, quantity: 7 },
-  { name: 'Захват', price: 1200, quantity: 2 },
-];
+let input;
+const numbers = [];
+let total = 0;
 
-const calculateTotalPrice = function (allProdcuts, productName) {
-  let result = 0;
-  for (let product of allProdcuts) {
-    if (product.name === productName) {
-      result = product.quantity * product.price;
-      return result;
+for (;;) {
+  input = prompt('Ввести число');
+  let number = Number(input);
+
+  if (input === null) {
+    for (let i = 0; i < numbers.length; i += 1) {
+      total += numbers[i];
     }
+    if (total === 0) {
+      alert('Нет чисел для сложения, попробуйте еще раз!');
+      continue;
+    }
+    console.log(`Общая сумма чисел равна ${total}`);
+    break;
   }
-};
-
-/*
- * Вызовы функции для проверки работоспособности твоей реализации.
- */
-console.log(calculateTotalPrice(products, 'Радар')); // 5200
-
-console.log(calculateTotalPrice(products, 'Дроид')); // 2800
+  if (Number.isNaN(number) === false) {
+    numbers.push(number);
+  } else {
+    alert('Было введено не число, попробуйте еще раз!');
+  }
+}
